@@ -53,5 +53,5 @@ def editProject(request, pk):
     return render(request, 'base/project_form.html', context)
 
 
-def gitTest(request):
-    return None
+def gitTest_NewBranch(request):
+    return
