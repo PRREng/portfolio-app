@@ -1,0 +1,91 @@
+{% extends 'base/main.html' %}
+    
+{% load static %}
+{% block content %}
+
+<section class="hero">
+    <div class="hero--content">
+        <div class="hero--content--intro">
+            <img id="profile-pic" src="{% static 'images/profile-pic.jpg' %}">
+            <h1 class="intro--name">Pedro <br> Ribeiro</h1>
+        </div>
+
+        <div class="hero--content--subheadline">
+            <h3 class="description">FullStack Developer</h3>
+            <p class="slogan">I teach people how to code and build cool things</p>
+        </div>
+
+    </div>
+</section>
+
+
+<section class="container section--2">
+
+    <h3>MY PROJECTS</h3>
+    <h5>Projects that make my journey worthwhile</h5>
+    <div class="projects--wrapper">
+
+        {% for project in projects %}
+        <div class="project--column">
+            <a href="{% url 'project' project.id %}">
+                <img class="project--thumbnail" src="{{project.thumbnail.url}}" />
+            </a>
+            <div class="project--body">
+                <h5>{{project.title}}</h5>
+            </div>
+        </div>
+        {% empty %}
+            <h3>There are no projects in the database...</h3>
+        {% endfor %}
+
+    </div>
+
+    <div class="about--wrapper">
+        <h3>More About Me</h3>
+        <p>Lorem ipsum is placeholder text commonly used in the graphic, 
+            print, and publishing industries for previewing layouts and 
+            visual mockups.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.  
+            Ut enim ad minim veniam, quis nostrud exercitation 
+            ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+            Duis aute irure dolor in reprehenderit in voluptate velit 
+            esse cillum dolore eu fugiat nulla pariatur. Excepteur sint 
+            occaecat cupidatat non proident, sunt in culpa qui officia deserunt 
+            mollit anim id est laborum.</p>
+    </div>
+
+</section>
+
+
+<section class="section--1">
+    <div class="skills--container">
+        <h3>More About Me</h3>
+        
+        {% for skill in detailedSkills %}
+            <div class="skill--wrapper">
+                <h5>{{skill.title}}</h5>
+                <p>{{skill.body}}</p>
+            </div>
+        {% empty %}
+            <h5>No data provided</h5>
+        {% endfor %}
+        
+
+        <h4>OTHER SKILLS</h4>
+
+        <div class="other--skills--wrapper">
+            
+            {% for skill in skills %}
+                <div class="skill--tag">
+                    <span>{{skill.title}}</span>
+                </div>
+            {% empty %}
+                <h5>No data provided.</h5>
+            {% endfor %}
+            
+        </div>
+    </div>
+
+</section>
+{% endblock content %}
