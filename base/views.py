@@ -38,7 +38,7 @@ def addProject(request):
 
 def editProject(request, pk):
     project = Project.objects.get(id=pk)
-    form = ProjectForm()
+    form = ProjectForm(instance=project)
 
     if request.method == 'POST':
         form = ProjectForm(request.POST, request.FILES)
@@ -51,9 +51,3 @@ def editProject(request, pk):
         'form': form,
     }
     return render(request, 'base/project_form.html', context)
-
-
-def gitTest_Subtract(request):
-    a = 1
-    b = 2
-    return b - a 
