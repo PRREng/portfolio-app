@@ -51,3 +51,7 @@ def editProject(request, pk):
         'form': form,
     }
     return render(request, 'base/project_form.html', context)
+
+
+def gitTest(request):
+    return None
